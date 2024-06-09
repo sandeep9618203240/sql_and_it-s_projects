@@ -1,0 +1,141 @@
+SQL---structured query language
+   sql is used to access and manipulate DataBases 
+     *sql can execute queries,retrieve,insert,delete,update,create operations against the DB.
+-----------------------------------------------------------------------------------------------------------
+MOST USED SQL COMMANDS:
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+-----------------------------------------------------------------------------------------------------------
+1) SELECT KEYWORD: 
+  	-primary keyword in sql 
+	-used as first word in writting a query  
+   syntax: 
+	 select * from table_name; ('*' is  used for selecting all elements in a table).
+
+* if you don't use * then specify the attributes names in the table like_
+   ex: select customerName,city FROM customer; (here customerName and city are attributes ( coloumns names anyway))
+      
+-------------------------------------------------------------------------------------------------------------
+2)DISTINCT KEYWORD:
+	- this keyword returns the non duplicate values from the table
+	- unique values are retrieved from the table	
+-syntax:
+         select distinct coloumn_name from table_name;
+------------------------------------------------------------------------------------------------------------- 
+3)WHERE keyword:
+	-used to select only required dataitem from the table
+-syntax:
+	select * from table_name
+	where column_name="item_name";
+   ex:
+      select *from customer where country='India';
+          
+#operators used in where: 
+    " = " ,">","<",">=","<=","<>"--> not equalto.
+   
+ #keywords used with where:
+	BETWEEN: between is the keyword for selecting a range of values in the column
+             ex: 
+		    select *from customer where  customerId between 20 and 30;
+		
+	LIKE: like is used to search for string or pattern of string using 'letter%,
+      		like examples:select *from customer where city like 's%'; (returns the stirng starts with s); 
+		
+	IN: used to find multiple values 
+		 ex: select *from customer where city in ('china','usa');
+	AND :
+  		 AND between two statements where both statments are correct then it retrun the matched values 
+    syntax:
+		SELECT column1, column2, ...FROM table_name WHERE condition1 AND condition2 AND condition3 ...;
+
+    OR used between the statments where any one statment is true then it return the match
+
+    NOT used before a statment where 
+---------------------------------------------------------------------------------------------------------------------
+4)ORDER BY :
+	-used to order any specified coloum;
+	-ORDER BY---DESC; --->descending order;
+ORDER BY attribute1,attribute2:
+	it orders the first coloumn ,if any duplicates occur it order by second coloumn;
+ORDER BY attribute1 ASC, attribute2 DESC;
+
+ 'letter%'-->gives all names starting with the given letter
+SELECT TOP:
+  used to select only some rows from table upto the mark;
+   --synatx----select top 4 * from table_name
+    **---select  * from  table limit number:
+     select top 50 percent from the table_name:
+Example
+SELECT * FROM Customers
+FETCH FIRST 50 PERCENT ROWS ONLY;
+Example
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+SELECT TOP 3 * FROM Customers
+ORDER BY CustomerName asc;
+
+**LIMIT : limit is the upper boundary for the select statment
+
+**FETCH :is used to retrieve the specific number of records from the table
+**AS---> select MIN(price) as smallprice;
+---------
+      select min(price) as [lower price of the data]
+
+5) 
+
+count ()
+---------
+   select  count(product) as pd from products where price >20;
+
+
+Select all records where the first letter of the City is an "a" or a "c" or an "s".
+
+
+SELECT * FROM Customers
+WHERE City LIKE '
+[acs]
+%';
+
+
+joins:
+  Inner join = joins the tables  where the records matches both tables 
+          
+
+
+
+
+
+
+
+ddl command-data definition language :create,alter,rename,truncate and drop;
+dql - dataauery language : select 
+dml data manupliation language : insert update,dlete
+dcl data control language ; grant, revoke permission to users
+tcl trasaction contral langauge : commit , rollback 
+
+
+
+primary key : main key unique one
+foreign key:  which is a column which is a primary key of another table
+
+
+
+having cluse;
+
+
+update clause: to change the value
+ example : update student where set grade="c" where grade ="a";
+
+
+actually mysql is in safe mode which prevents us from mess with the data table 
+ to off safe mode : set sql_safe_updates=0;
